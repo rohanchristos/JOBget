@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Community</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 32px rgba(60, 72, 88, 0.15);
+      padding: 2.5rem 3.5rem;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 12px 40px rgba(60, 72, 88, 0.22);
+    }
+    .community-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #4f46e5;
+      margin-bottom: 1.1rem;
+      letter-spacing: -1px;
+    }
+    .user-count {
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+    .subtitle {
+      font-size: 1.1rem;
+      color: #64748b;
+      margin-bottom: 0.7rem;
+    }
+    .join-btn {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 0.7rem 2.2rem;
+      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.1);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .join-btn:hover {
+      background: linear-gradient(90deg, #818cf8 0%, #6366f1 100%);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="community-title">Welcome to Our Community</div>
+    <div class="user-count"><%= count %></div>
+    <div class="subtitle">
+      <%= count === 1 ? 'member has joined us!' : 'members have joined us!' %>
+    </div>
+    <a href="/signup" class="join-btn">Join Now</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit User</title>
+    <style>
+      body {
+        background: #f6f8fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 400px;
+        margin: 60px auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+        padding: 32px 28px 24px 28px;
+      }
+      h3 {
+        margin-top: 0;
+        color: #1976d2;
+        font-weight: 600;
+        margin-bottom: 28px;
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      textarea {
+        resize: vertical;
+        min-height: 40px;
+        max-height: 120px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #cfd8dc;
+        border-radius: 5px;
+        background: #f9fafb;
+        transition: border 0.2s;
+      }
+      textarea:focus {
+        outline: none;
+        border: 1.5px solid #1976d2;
+        background: #fff;
+      }
+      input[type="password"] {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #cfd8dc;
+        border-radius: 5px;
+        background: #f9fafb;
+        transition: border 0.2s;
+      }
+      input[type="password"]:focus {
+        outline: none;
+        border: 1.5px solid #1976d2;
+        background: #fff;
+      }
+      button {
+        background: #1976d2;
+        color: #fff;
+        border: none;
+        padding: 12px 0;
+        border-radius: 5px;
+        font-size: 17px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      button:hover {
+        background: #125ea7;
+      }
+      @media (max-width: 500px) {
+        .container {
+          padding: 18px 8px 14px 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Edit your user: <%= user.email %></h3>
+      <form method="post" action="/user/<%= user.id %>?_method=PATCH">
+        <textarea name="username" placeholder="Enter new username"><%= user.username %></textarea>
+        <input
+          name="password"
+          placeholder="Enter your password"
+          type="password"
+          required
+        />
+        <button>Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

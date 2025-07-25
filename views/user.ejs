@@ -1,0 +1,143 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Users</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f7f9fa;
+        margin: 0;
+        padding: 30px;
+      }
+
+      h2 {
+        margin-top: 30px;
+        color: #333;
+      }
+
+      form {
+        display: inline;
+      }
+
+      button {
+        background: #1976d2;
+        color: #fff;
+        border: none;
+        padding: 7px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: background 0.2s;
+      }
+
+      button:hover {
+        background: #125ea7;
+      }
+
+      table {
+        width: 90%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      }
+
+      th, td {
+        padding: 14px 18px;
+        text-align: left;
+      }
+
+      th {
+        background: #1976d2;
+        color: #fff;
+        font-weight: 600;
+        border-bottom: 2px solid #13518a;
+      }
+
+      tr:nth-child(even) {
+        background: #f2f6fa;
+      }
+
+      tr:hover {
+        background: #e3edf7;
+        transition: background 0.2s;
+      }
+
+      td:last-child, td:nth-last-child(2) {
+        text-align: center;
+      }
+
+      /* Responsive Table */
+      @media (max-width: 700px) {
+        table, thead, tbody, th, td, tr {
+          display: block;
+        }
+        th, td {
+          padding: 12px 10px;
+        }
+        th {
+          background: #1976d2;
+          color: #fff;
+        }
+        tr {
+          margin-bottom: 15px;
+        }
+        td {
+          border: none;
+          border-bottom: 1px solid #eee;
+          position: relative;
+          padding-left: 50%;
+        }
+        td:before {
+          position: absolute;
+          left: 10px;
+          top: 12px;
+          width: 45%;
+          white-space: nowrap;
+          font-weight: bold;
+          color: #1976d2;
+        }
+        td:nth-of-type(1):before { content: "Id"; }
+        td:nth-of-type(2):before { content: "Email"; }
+        td:nth-of-type(3):before { content: "Username"; }
+        td:nth-of-type(4):before { content: "Edit"; }
+        td:nth-of-type(5):before { content: "Delete"; }
+      }
+    </style>
+  </head>
+  <body>
+    <form method="GET" action="/user/new">
+      <button>Add New User</button>
+    </form>
+
+    <h2>List of all users</h2>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <% for(user of data) { %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.username %></td>
+        <td>
+          <form method="get" action="/user/<%=user.id%>/edit">
+            <button>Edit username</button>
+          </form>
+        </td>
+        <td>
+          <form method="get" action="/user/<%=user.id%>/delete">
+            <button style="background:#d32f2f;">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+  </body>
+</html>
